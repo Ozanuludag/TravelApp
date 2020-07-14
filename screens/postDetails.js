@@ -59,8 +59,8 @@ const Post = ({ navigation, route }) => {
     },
   ]);
 
-  console.log(gallery);
-  console.log(data);
+  //console.log(gallery);
+  //console.log(data);
   const goBack = () => {
     navigation.goBack();
   };

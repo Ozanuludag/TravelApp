@@ -3,12 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   ImageBackground,
   ScrollView,
   TouchableOpacity,
   FlatList,
   TextInput,
+  ActivityIndicator ,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import {
@@ -21,6 +21,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { Image } from 'react-native-elements';
 
 const Home = ({ navigation }) => {
   const image = {
@@ -98,16 +99,20 @@ const Home = ({ navigation }) => {
               }}
             />
           </View>
+          <TouchableOpacity  
+              onPress={() => navigation.navigate('Example')}
+              style={{
+              position: "absolute",
+              top: hp("1.5%"),
+              left: "5%",
+            }}>
           <Icon
             name="menu-outline"
             size={hp("4%")}
             color="#fff"
-            style={{
-              position: "absolute",
-              top: hp("1.5%"),
-              left: "5%",
-            }}
           />
+          </TouchableOpacity>
+          
           <TouchableOpacity
             onPress={() => alert("Notifications pressed")}
             style={{
@@ -145,6 +150,8 @@ const Home = ({ navigation }) => {
                     <Image
                       source={item.image}
                       image={item.image}
+                      PlaceholderContent={<ActivityIndicator size="small" color="#0000ff" />}
+                      
                       style={{
                         width: responsiveScreenWidth(40),
                         marginRight: wp("2%"),

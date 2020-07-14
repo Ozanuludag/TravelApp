@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './screens/home';
 import Post from './screens/postDetails';
+import Example from './screens/example';
+
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,7 @@ export default function App() {
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Post" component={Post} />
+          <Stack.Screen name="Example" component={Example} />
         </Stack.Navigator>
       </NavigationContainer>
     );
