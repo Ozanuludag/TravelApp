@@ -1,37 +1,133 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator, DrawerItem, DrawerContent, DrawerItemList } from '@react-navigation/drawer';
+import Icon from "react-native-vector-icons/Ionicons";
+
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 import Home from './screens/home';
 import Post from './screens/postDetails';
 import Example from './screens/example';
 
-
 const Stack = createStackNavigator();
+const ExampleStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function HomeStackScreen() {
+  return (
+    <Stack.Navigator 
+      screenOptions={{
+      headerShown:false 
+    }}>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+      />
+      <Stack.Screen
+        name="Post"
+        component={Post}
+      />
+      <Stack.Screen
+        name="Example"
+        component={Example}
+      />
+
+    </Stack.Navigator>
+  );
+}
+
+function ExampleStackScreen() {
+  return (
+    <ExampleStack.Navigator 
+      screenOptions={{
+      headerShown:false 
+    }}
+    >
+      <ExampleStack.Screen
+        name=" Example"
+        component={ Example}
+      />
+    </ExampleStack.Navigator>
+  );
+}
+
+const CustomDrawerContentComponent = (props) => {
+  return(
+   <ScrollView>
+   <SafeAreaView style= {styles.container}
+   forceInset={{top: 'always', horizontal: 'never'}}
+   >
+     <View>
+        <ImageBackground source={require('./assets/images/index.jpg')}
+              style={styles.drawerImage} >
+
+             <View style={{alignItems:'center'}}>
+                <Text style={styles.drawerHeaderText}> Travel App </Text>
+             </View>
+        </ImageBackground>
+     </View>
+     <DrawerItemList {...props} /> 
+   </SafeAreaView>
+ </ScrollView>
+  )
+ }
 
 export default function App() {
-
     return (
+
       <NavigationContainer>
-        <Stack.Navigator 
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown:false 
-        }}
+        <Drawer.Navigator
+         initialRouteName="Home"
+         screenOptions={{
+           headerShown:false 
+         }}
+         drawerContent={(props) => <CustomDrawerContentComponent {...props} />}
         >
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Post" component={Post} />
-          <Stack.Screen name="Example" component={Example} />
-        </Stack.Navigator>
-      </NavigationContainer>
+          <Drawer.Screen name="Home" component={HomeStackScreen} 
+          options={{ drawerIcon: ({tintColor}) => (
+            <Icon name="home-outline" size={22} color={tintColor} 
+            />
+        )
+    }}
+          />
+          <Drawer.Screen name="All Places" component={ExampleStackScreen} 
+            options={{ drawerIcon: ({tintColor}) => (
+              <Icon name="book-outline" size={22} color={tintColor} 
+              />
+          )
+      }}
+          />
+        </Drawer.Navigator>
+    </NavigationContainer>
+
     );
-  
 }
 
 const styles = StyleSheet.create({
   container: {
     flex:1,
+  },
+  drawerHeader: {
+    backgroundColor :'#512DA8',
+    height: 140,
+    alignItems: 'center',
+    justifyContent:'center',
+    flexDirection:'row',
+  },
+  drawerHeaderText: {
+    color:'black',
+    fontSize:hp('5%'),
+    fontWeight:'bold',
+    marginTop:hp('5%'),
+  },
+  drawerImage: {
+    width:'100%',
+    height: hp('30%'),
   }
 })

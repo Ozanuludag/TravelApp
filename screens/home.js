@@ -21,7 +21,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { Image } from 'react-native-elements';
+import { Image, Avatar, Badge, withBadge } from 'react-native-elements';
 
 const Home = ({ navigation }) => {
   const image = {
@@ -70,7 +70,9 @@ const Home = ({ navigation }) => {
       key: "4",
     },
   ]);
+  const [counter, setCounter] =useState(1);
 
+  const BadgedIcon = withBadge(counter)(Icon)
   return (
     <View style={{ flexGrow: 1, height: hp("100%") }}>
       <View>
@@ -93,14 +95,14 @@ const Home = ({ navigation }) => {
               color="#666"
               style={{
                 position: "absolute",
-                top: hp("4%"),
+                top: hp("4.5%"),
                 right: wp("30%"),
                 opacity: 0.6,
               }}
             />
           </View>
           <TouchableOpacity  
-              onPress={() => navigation.navigate('Example')}
+              onPress={() => navigation.openDrawer() }
               style={{
               position: "absolute",
               top: hp("1.5%"),
@@ -112,17 +114,25 @@ const Home = ({ navigation }) => {
             color="#fff"
           />
           </TouchableOpacity>
-          
-          <TouchableOpacity
-            onPress={() => alert("Notifications pressed")}
-            style={{
+        
+            <TouchableOpacity
+              onPress={() => setCounter(counter+1)}
+              style={{
               position: "absolute",
               top: hp("2%"),
               right: "5%",
             }}
-          >
-            <Icon name="notifications-outline" size={hp("3%")} color="#fff" />
-          </TouchableOpacity>
+            > 
+            <BadgedIcon 
+            type="ionicon" 
+            name="notifications-outline" 
+            size={hp("3%")} 
+            color="#fff"
+           
+            />
+
+            </TouchableOpacity>
+          
         </ImageBackground>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -173,7 +183,7 @@ const Home = ({ navigation }) => {
             }}
           />
         </View>
-        <View style={{ marginBottom: hp("5%") }}>
+        <View style={{ marginBottom: hp("5%"), }}>
           <View
             style={{
               padding: hp("2%"),
@@ -194,15 +204,17 @@ const Home = ({ navigation }) => {
               View All
             </Text>
           </View>
-          <Image
+      
+         <Image
             source={recentImage}
             style={{
               width: "95%",
               height: hp("30%"),
               borderRadius: 10,
-              alignSelf: "center",
+              marginLeft: wp('2%')
+             
             }}
-          />
+          />     
 
           <View style={{ position: "absolute", bottom: 0, padding: hp("1%") }}>
             <View style={{ flexDirection: "row" }}>
@@ -221,8 +233,7 @@ const Home = ({ navigation }) => {
                   marginHorizontal: 10,
                 }}
               >
-                {" "}
-                Venice{" "}
+                Venice
               </Text>
             </View>
             <Text
