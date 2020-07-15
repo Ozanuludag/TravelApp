@@ -59,10 +59,11 @@ function ExampleStackScreen() {
 
 const CustomDrawerContentComponent = (props) => {
   return(
-   <ScrollView>
+  
    <SafeAreaView style= {styles.container}
    forceInset={{top: 'always', horizontal: 'never'}}
    >
+     <ScrollView>
      <View>
         <ImageBackground source={require('./assets/images/index.jpg')}
               style={styles.drawerImage} >
@@ -72,9 +73,16 @@ const CustomDrawerContentComponent = (props) => {
              </View>
         </ImageBackground>
      </View>
-     <DrawerItemList {...props} /> 
+     <DrawerItemList {...props} />
+     </ScrollView>
+     <View style={styles.drawerBottom}>
+      <Icon name='logo-instagram' size={24} style={{marginLeft:wp('10%')}}/>
+      <Icon name="logo-twitter" size={24}/>
+      <Icon name='logo-youtube' size={24}/>
+      <Icon name='logo-facebook' size={24} style={{marginRight:wp('10%')}}/>
+      </View> 
    </SafeAreaView>
- </ScrollView>
+ 
   )
  }
 
@@ -98,7 +106,7 @@ export default function App() {
           />
           <Drawer.Screen name="All Places" component={ExampleStackScreen} 
             options={{ drawerIcon: ({tintColor}) => (
-              <Icon name="book-outline" size={22} color={tintColor} 
+              <Icon name="airplane-outline" size={22} color={tintColor} 
               />
           )
       }}
@@ -129,5 +137,13 @@ const styles = StyleSheet.create({
   drawerImage: {
     width:'100%',
     height: hp('30%'),
+  },
+  drawerBottom: {
+    width:wp('78%'), 
+    height:hp('8%'), 
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    
   }
 })

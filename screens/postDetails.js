@@ -66,7 +66,7 @@ const Post = ({ navigation, route }) => {
   };
 
   return (
-    <View style={{ backgroundColor: "white", flex: 1 }}>
+    <View style={{ backgroundColor: "white", flex:1, marginTop:hp('3.5%')}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: "white" }}

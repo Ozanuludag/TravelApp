@@ -21,7 +21,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { Image, Avatar, Badge, withBadge } from 'react-native-elements';
+import { Image, withBadge } from 'react-native-elements';
 
 const Home = ({ navigation }) => {
   const image = {
@@ -70,11 +70,11 @@ const Home = ({ navigation }) => {
       key: "4",
     },
   ]);
-  const [counter, setCounter] =useState(1);
+  const [counter, setCounter] = useState(1);
 
   const BadgedIcon = withBadge(counter)(Icon)
   return (
-    <View style={{ flexGrow: 1, height: hp("100%") }}>
+    <View style={{ flexGrow: 1, marginTop:hp('3.5%') }}>
       <View>
         <ImageBackground source={image} style={styles.image}>
           <View style={styles.searchContainer}>
