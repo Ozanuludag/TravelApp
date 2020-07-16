@@ -158,20 +158,31 @@ const Home = ({ navigation }) => {
                   }}
                 >
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Post", { item })}
+                    onPress={() => navigation.navigate("Post", { item, gallery } )}
+                    style={{
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 20,
+                      },
+                      shadowOpacity: 0.34,
+                      shadowRadius: 6.27,
+
+                      elevation: 10,
+                    }}
                   >
-                    <Image
-                      source={item.image}
-                      image={item.image}
-                      PlaceholderContent={<ActivityIndicator size="small" color="#0000ff" />}
-                      
-                      style={{
-                        width: responsiveScreenWidth(40),
-                        marginRight: wp("2%"),
-                        height: responsiveScreenHeight(20),
-                        borderRadius: 10,
-                      }}
-                    />
+                        <Image
+                          source={item.image}
+                          image={item.image}
+                          PlaceholderContent={<ActivityIndicator size="small" color="#0000ff" />}
+                          
+                          style={{
+                            width: responsiveScreenWidth(40),
+                            marginRight: wp("2%"),
+                            height: responsiveScreenHeight(20),
+                            borderRadius: 10,
+                          }}
+                        />
 
                     <Icon
                       name="pin-outline"

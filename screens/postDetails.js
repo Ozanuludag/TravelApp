@@ -22,42 +22,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const Post = ({ navigation, route }) => {
+  const Post = ({ navigation, route }) => {
   const data = route.params.item;
-  const [gallery, setgallery] = useState([
-    {
-      image: {
-        uri:
-          "https://im0-tub-tr.yandex.net/i?id=0372e7559ea4bb9b277926921e8ca1fd&n=13",
-      },
-      title: "Switzerland",
-      key: "1",
-    },
-    {
-      image: {
-        uri:
-          "https://portal.andina.pe/EDPfotografia3/Thumbnail/2017/11/09/000462113W.jpg",
-      },
-      title: "New Zeland",
-      key: "2",
-    },
-    {
-      image: {
-        uri:
-          "https://im0-tub-tr.yandex.net/i?id=4c667d83715020671fb6bae379bafd1b&n=13",
-      },
-      title: "Rome",
-      key: "3",
-    },
-    {
-      image: {
-        uri:
-          "https://blog.educaistanbul.com/wp-content/uploads/2018/03/tahiti-1.jpg",
-      },
-      title: "Tahiti",
-      key: "4",
-    },
-  ]);
+  const gallery = route.params.gallery;
 
   //console.log(gallery);
   //console.log(data);

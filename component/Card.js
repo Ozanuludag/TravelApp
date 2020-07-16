@@ -56,6 +56,7 @@ const CardComponent = (props) => {
                 <TouchableOpacity
                    onPress={() => props.navigation.navigate('Post', { item }) }
                   >
+                <View style={{elevation:10}}>
                 <ImageBackground 
                     source={item.image}
                     style={styles.contain}
@@ -76,6 +77,7 @@ const CardComponent = (props) => {
                     </View>
     
                 </ImageBackground>
+                </View>
                 </TouchableOpacity>
                </ScrollView>
                </View>
@@ -96,15 +98,7 @@ const styles = StyleSheet.create({
         height:200, 
         flexDirection:'row', 
         justifyContent:'space-between',
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.34,
-        shadowRadius: 6.27,
-        elevation: 10,
-     
+        elevation:10
     }
 
   });
