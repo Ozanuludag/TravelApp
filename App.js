@@ -60,29 +60,28 @@ function ExampleStackScreen() {
 const CustomDrawerContentComponent = (props) => {
   return(
   
-   <SafeAreaView style= {styles.container}
-   forceInset={{top: 'always', horizontal: 'never'}}
-   >
-     <ScrollView>
-     <View>
+   <SafeAreaView style= {styles.container}>
+     <View style={styles.drawerHeader}>
         <ImageBackground source={require('./assets/images/index.jpg')}
+              imageStyle={{width:'100%', height:'100%'}}
               style={styles.drawerImage} >
-
              <View style={{alignItems:'center'}}>
                 <Text style={styles.drawerHeaderText}> Travel App </Text>
              </View>
         </ImageBackground>
      </View>
-     <DrawerItemList {...props} />
-     </ScrollView>
+      <ScrollView style={{flex:1}}>
+        <DrawerItemList {...props} />
+      </ScrollView>
      <View style={styles.drawerBottom}>
-      <Icon name='logo-instagram' size={24} style={{marginLeft:wp('10%')}}/>
-      <Icon name="logo-twitter" size={24}/>
-      <Icon name='logo-youtube' size={24}/>
-      <Icon name='logo-facebook' size={24} style={{marginRight:wp('10%')}}/>
-      </View> 
+        <Icon name='logo-instagram' size={24} style={{marginLeft:wp('10%')}}/>
+        <Icon name="logo-twitter" size={24}/>
+        <Icon name='logo-youtube' size={24}/>
+        <Icon name='logo-facebook' size={24} style={{marginRight:wp('10%')}}/>
+      </View>
+
    </SafeAreaView>
- 
+
   )
  }
 
@@ -111,6 +110,7 @@ export default function App() {
           )
       }}
           />
+          
         </Drawer.Navigator>
     </NavigationContainer>
 
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
     flex:1,
   },
   drawerHeader: {
+    marginTop:'8%',// Hata var!! Kontrol et, image içeri giriyor.
     backgroundColor :'#512DA8',
-    height: 140,
     alignItems: 'center',
     justifyContent:'center',
     flexDirection:'row',
@@ -139,11 +139,11 @@ const styles = StyleSheet.create({
     height: hp('30%'),
   },
   drawerBottom: {
-    width:wp('78%'), 
     height:hp('8%'), 
     flexDirection:'row',
     justifyContent:'space-between',
     alignItems:'center',
-    
+  
+
   }
 })

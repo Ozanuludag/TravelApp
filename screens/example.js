@@ -3,8 +3,8 @@ import { Header } from 'react-native-elements';
 import {StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from "react-native-vector-icons/Ionicons";
-
-const Example = ({navigation}) => {
+import Card from '../component/Card'
+const Example = ({navigation},props) => {
 
   const LeftComponent = () => {
     return (
@@ -27,13 +27,13 @@ const Example = ({navigation}) => {
   }
 
     return (
-        <View>
+        <View style={{flex:1}}>
           <Header
             leftComponent={<LeftComponent />}
             centerComponent={{ text: 'TRAVEL APP', style: { color: '#fff', fontSize:20 } }}
             rightComponent={<RightComponent />}
           />
-            <Text>Example Page</Text>
+           <Card navigation={navigation} />
         </View>
       );
 }

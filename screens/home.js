@@ -22,6 +22,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Image, withBadge } from 'react-native-elements';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = ({ navigation }) => {
   const image = {
@@ -74,7 +75,8 @@ const Home = ({ navigation }) => {
 
   const BadgedIcon = withBadge(counter)(Icon)
   return (
-    <View style={{ flexGrow: 1, marginTop:hp('3.5%') }}>
+    <SafeAreaView>
+    <View style={{flexGrow:1}}>
       <View>
         <ImageBackground source={image} style={styles.image}>
           <View style={styles.searchContainer}>
@@ -134,6 +136,7 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           
         </ImageBackground>
+      
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ padding: 16 }}>
@@ -166,7 +169,7 @@ const Home = ({ navigation }) => {
                         width: responsiveScreenWidth(40),
                         marginRight: wp("2%"),
                         height: responsiveScreenHeight(20),
-                        borderRadius: 5,
+                        borderRadius: 10,
                       }}
                     />
 
@@ -194,7 +197,8 @@ const Home = ({ navigation }) => {
             <Text style={{ fontSize: hp("2.5%"), fontWeight: "bold" }}>
               Recently Viewed
             </Text>
-            <Text
+           <TouchableOpacity onPress={() => navigation.navigate('Example')}>
+           <Text
               style={{
                 fontSize: hp("2%"),
                 fontWeight: "bold",
@@ -203,6 +207,7 @@ const Home = ({ navigation }) => {
             >
               View All
             </Text>
+           </TouchableOpacity>
           </View>
       
          <Image
@@ -252,6 +257,7 @@ const Home = ({ navigation }) => {
         </View>
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 
@@ -264,7 +270,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: wp("100%"),
-    height: responsiveScreenHeight(24),
+    height: responsiveScreenHeight(25),
   },
 
   searchContainer: {

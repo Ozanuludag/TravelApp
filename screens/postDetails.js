@@ -66,7 +66,7 @@ const Post = ({ navigation, route }) => {
   };
 
   return (
-    <View style={{ backgroundColor: "white", flex:1, marginTop:hp('3.5%')}}>
+    <View style={{ backgroundColor: "white", flex:1, marginTop:hp('2.5%')}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ backgroundColor: "white" }}
@@ -152,8 +152,7 @@ const Post = ({ navigation, route }) => {
 
         <View style={{ marginVertical: 10 }}>
           <Text style={{ fontSize: 20, fontWeight: "bold", padding: 14 }}>
-            {" "}
-            Suggested Places{" "}
+            Suggested Places
           </Text>
           <FlatList
             showsHorizontalScrollIndicator={false}
